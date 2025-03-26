@@ -55,14 +55,17 @@ export default function OllamaComponent() {
         <div className="h-10 w-10 border-t-4 border-blue-500 border-solid rounded-full animate-spin mt-4"></div>
       )}
 
-      {response && !loading && (
+{response && !loading && (
         <motion.div
-          className="mt-4 p-4 border-2 border-gray-700 bg-gray-800 rounded-lg shadow-lg w-4/5 text-center"
+          className="mt-4 p-4 border-2 border-gray-700 bg-gray-800 rounded-lg shadow-lg w-4/5 text-left"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <strong>Response:</strong> {response}
+          <strong className="text-blue-400">Response:</strong>
+          <div className="mt-2 text-gray-300 whitespace-pre-line">
+            {response.replace(/\n\d+\./g, "\n\n👉")} 
+          </div>
         </motion.div>
       )}
     </div>
